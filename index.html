@@ -1,154 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streetx OG</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetX | OG Streetwear</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
+    .btn {
+      background: black; color: white; padding: 10px 20px;
+      border-radius: 9999px; font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: white; color: black; border: 2px solid black;
+    }
+  </style>
 </head>
+<body class="bg-gray-900 text-white font-sans">
 
-<body class="bg-black text-white font-sans">
-  <!-- Navbar -->
-  <header class="flex items-center justify-between px-6 py-4 bg-zinc-900 shadow">
-    <h1 class="text-2xl font-bold tracking-widest">Streetx OG</h1>
-    <nav class="space-x-4">
-      <button onclick="showCart()" class="bg-white text-black px-4 py-2 rounded hover:bg-gray-200">Cart 🛒 (<span id="cart-count">0</span>)</button>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="text-center py-20 bg-zinc-800">
-    <h2 class="text-4xl font-bold mb-4">Unleash The Street OG Look</h2>
-    <p class="text-zinc-400 mb-6">Premium streetwear, sneakers, and accessories</p>
-    <a href="#products" class="bg-white text-black px-6 py-3 rounded text-lg hover:bg-gray-200">Shop Now</a>
-  </section>
-
-  <!-- Categories -->
-  <section class="py-10 px-6 text-center">
-    <h3 class="text-3xl font-semibold mb-8">Explore Categories</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-zinc-800 p-6 rounded shadow hover:scale-105 transition cursor-pointer">Shoes</div>
-      <div class="bg-zinc-800 p-6 rounded shadow hover:scale-105 transition cursor-pointer">Clothes</div>
-      <div class="bg-zinc-800 p-6 rounded shadow hover:scale-105 transition cursor-pointer">Accessories</div>
+  <!-- HERO VIDEO -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="streetx-banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-6">
+      <h1 class="text-4xl md:text-6xl font-extrabold uppercase mb-4">StreetX</h1>
+      <p class="text-lg md:text-2xl mb-6">Unleash the OG Street Vibe</p>
+      <a href="#shop" class="btn">Shop Now</a>
     </div>
   </section>
 
-  <!-- Products -->
-  <section id="products" class="px-6 py-10">
-    <h3 class="text-3xl font-semibold mb-8 text-center">Branded Products</h3>
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-  </section>
-
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="fixed inset-0 bg-black/80 flex justify-center items-center hidden z-50">
-    <div class="bg-white text-black p-6 w-[90%] max-w-lg rounded shadow-xl">
-      <div class="flex justify-between items-center mb-4">
-        <h4 class="text-xl font-bold">Your Cart</h4>
-        <button onclick="hideCart()" class="text-red-500">Close</button>
+  <!-- CATEGORIES -->
+  <section class="py-12 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Shop by Category</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Shoes</h3>
+        <a href="#" class="btn mt-2">Shop Now</a>
       </div>
-      <div id="cart-items" class="space-y-4"></div>
-      <div class="mt-4 font-bold">Total: ₹<span id="cart-total">0</span></div>
-    </div>
-  </div>
-
-  <!-- Product Detail Modal -->
-  <div id="product-modal" class="fixed inset-0 bg-black/70 flex justify-center items-center hidden z-50">
-    <div class="bg-white text-black p-6 w-[90%] max-w-md rounded shadow-xl">
-      <div class="flex justify-between items-center mb-2">
-        <h4 id="modal-title" class="text-lg font-bold"></h4>
-        <button onclick="hideProductModal()" class="text-red-500">Close</button>
+      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Clothes</h3>
+        <a href="#" class="btn mt-2">Shop Now</a>
       </div>
-      <img id="modal-image" src="" alt="Product Image" class="w-full h-64 object-cover mb-4 rounded" />
-      <p id="modal-price" class="font-bold"></p>
-      <p id="modal-desc" class="text-sm text-gray-700 mt-2">Full OG premium product.</p>
+      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Accessories</h3>
+        <a href="#" class="btn mt-2">Shop Now</a>
+      </div>
+      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Hoodies</h3>
+        <a href="#" class="btn mt-2">Shop Now</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <script>
-    const products = [
-      {
-        name: "Nike Air Max 270",
-        price: 6999,
-        image: "https://images.unsplash.com/photo-1606813909357-4d37c8e981c3",
-        category: "Shoes",
-      },
-      {
-        name: "Oversized Hoodie",
-        price: 2299,
-        image: "https://images.unsplash.com/photo-1618354691211-dbd029c3d7ec",
-        category: "Clothes",
-      },
-      {
-        name: "Snapback Cap",
-        price: 799,
-        image: "https://images.unsplash.com/photo-1618354691211-2a1e2bb23ebf",
-        category: "Accessories",
-      },
-    ];
+  <!-- FEATURED PRODUCTS -->
+  <section id="shop" class="py-12 px-6 bg-gray-800 text-center">
+    <h2 class="text-3xl font-bold mb-10">Featured Products</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Street OG Sneakers</h3>
+          <p class="text-sm text-gray-600">₹2,999</p>
+          <button class="btn mt-3">Add to Cart</button>
+        </div>
+      </div>
+      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Urban Warrior Hoodie</h3>
+          <p class="text-sm text-gray-600">₹1,499</p>
+          <button class="btn mt-3">Add to Cart</button>
+        </div>
+      </div>
+      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
+        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Limited Edition Cap</h3>
+          <p class="text-sm text-gray-600">₹799</p>
+          <button class="btn mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const cart = [];
+  <!-- TESTIMONIALS -->
+  <section class="py-16 px-6 text-center bg-black">
+    <h2 class="text-3xl font-bold mb-10">What Our Customers Say</h2>
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div>
+        <p class="italic text-gray-300">"StreetX gave me the dopest kicks I've ever owned!"</p>
+        <span class="block mt-2 font-semibold">– Arjun, Mumbai</span>
+      </div>
+      <div>
+        <p class="italic text-gray-300">"The quality and vibe are unbeatable. OG all the way."</p>
+        <span class="block mt-2 font-semibold">– Zeeshan, Bangalore</span>
+      </div>
+    </div>
+  </section>
 
-    const productGrid = document.getElementById("product-grid");
+  <!-- CONTACT -->
+  <section class="py-12 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+    <p>Email: <a href="mailto:support@streetx.in" class="underline">support@streetx.in</a></p>
+    <p>Instagram: <a href="#" class="underline">@streetx.official</a></p>
+    <p class="mt-4">© 2025 StreetX. All Rights Reserved.</p>
+  </section>
 
-    products.forEach((product, index) => {
-      const card = document.createElement("div");
-      card.className = "bg-zinc-800 p-4 rounded shadow text-center";
-      card.innerHTML = `
-        <img src="${product.image}" class="w-full h-52 object-cover mb-4 rounded" />
-        <h4 class="text-xl font-semibold">${product.name}</h4>
-        <p class="text-zinc-400 mb-2">₹${product.price}</p>
-        <button onclick="addToCart(${index})" class="bg-white text-black px-4 py-2 rounded mr-2">Add to Cart</button>
-        <button onclick="viewProduct(${index})" class="bg-gray-700 text-white px-4 py-2 rounded">View</button>
-      `;
-      productGrid.appendChild(card);
-    });
+  <!-- CART BUTTON -->
+  <button class="fixed bottom-5 right-5 bg-black text-white px-4 py-3 rounded-full shadow-lg text-sm font-semibold z-50 hover:bg-white hover:text-black border-2 border-white">
+    🛒 Cart
+  </button>
 
-    function addToCart(index) {
-      cart.push(products[index]);
-      document.getElementById("cart-count").textContent = cart.length;
-      alert("Added to cart");
-    }
-
-    function showCart() {
-      const cartModal = document.getElementById("cart-modal");
-      const cartItems = document.getElementById("cart-items");
-      const cartTotal = document.getElementById("cart-total");
-
-      cartItems.innerHTML = "";
-      let total = 0;
-
-      cart.forEach((item, i) => {
-        total += item.price;
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "flex justify-between border-b pb-2";
-        itemDiv.innerHTML = `
-          <span>${item.name}</span>
-          <span>₹${item.price}</span>
-        `;
-        cartItems.appendChild(itemDiv);
-      });
-
-      cartTotal.textContent = total;
-      cartModal.classList.remove("hidden");
-    }
-
-    function hideCart() {
-      document.getElementById("cart-modal").classList.add("hidden");
-    }
-
-    function viewProduct(index) {
-      const modal = document.getElementById("product-modal");
-      document.getElementById("modal-title").textContent = products[index].name;
-      document.getElementById("modal-image").src = products[index].image;
-      document.getElementById("modal-price").textContent = `₹${products[index].price}`;
-      modal.classList.remove("hidden");
-    }
-
-    function hideProductModal() {
-      document.getElementById("product-modal").classList.add("hidden");
-    }
-  </script>
 </body>
-
 </html>
