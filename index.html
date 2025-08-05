@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STREETX - Streetwear Store</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+
+    video.bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
+    }
+
+    .navbar {
+      background: transparent !important;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding: 80px 20px;
+      background-color: #111;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #f2f2f2;
+    }
+
+    .product-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .product-card .info {
+      padding: 15px;
+    }
+
+    .product-card .info h5 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .product-card .info p {
+      margin: 5px 0 0;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: #000;
+      padding: 30px;
+      text-align: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <video autoplay muted loop class="bg-video">
+      <source src="streetx-banner.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark px-4">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold fs-3" href="#">STREETX</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navItems">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navItems">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+            <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-text text-white">
+      <h1>STREETX</h1>
+      <p>Unleash the Streetwear Beast</p>
+    </div>
+  </header>
+
+  <section class="section" id="shop">
+    <h2>Featured Collection</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/e7/25/25/e725251a432d0800cb62a702bba23cbd.jpg" alt="T-Shirt">
+            <div class="info">
+              <h5>Oversized Tee</h5>
+              <p>₹999 - StreetX Edition</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/3b/59/df/3b59df7bce3e88c15c19f3e8aa2ff690.jpg" alt="Hoodie">
+            <div class="info">
+              <h5>StreetX Hoodie</h5>
+              <p>₹1499 - Limited Drop</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/15/08/f4/1508f4fca7c82f1b4f2ab7a4c22034f6.jpg" alt="Shoes">
+            <div class="info">
+              <h5>Chunky Sneakers</h5>
+              <p>₹1999 - Urban Collection</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trending">
+    <h2>Trending Now</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/cf/4e/55/cf4e552faea8eb5dc89a50dc4602c2c5.jpg" alt="Fit">
+            <div class="info">
+              <h5>Daily Street Fit</h5>
+              <p>From ₹799</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/86/4a/5f/864a5f1728e3f96b9d867269e15b0c9e.jpg" alt="Cap">
+            <div class="info">
+              <h5>StreetX Cap</h5>
+              <p>₹499 - Drop 3</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/33/e1/19/33e1194410f3953b16ff1210ecb764ed.jpg" alt="Pants">
+            <div class="info">
+              <h5>Oversized Cargo</h5>
+              <p>₹1399 - Utility Drop</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>© 2025 STREETX. All rights reserved. | Follow us @streetxwear</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
