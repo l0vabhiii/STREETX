@@ -1,119 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StreetX | OG Streetwear</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streetx – Unisex Streetwear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
-    .btn {
-      background: black; color: white; padding: 10px 20px;
-      border-radius: 9999px; font-weight: 600;
-      transition: all 0.3s ease;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
     }
-    .btn:hover {
-      background: white; color: black; border: 2px solid black;
+    h1, h2 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 2px;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .zoom:hover {
+      transform: scale(1.05);
+      transition: 0.4s ease-in-out;
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="overflow-x-hidden">
 
-  <!-- HERO VIDEO -->
-  <section class="relative w-full h-screen overflow-hidden">
-    <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="streetx-banner.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-extrabold uppercase mb-4">StreetX</h1>
-      <p class="text-lg md:text-2xl mb-6">Unleash the OG Street Vibe</p>
-      <a href="#shop" class="btn">Shop Now</a>
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 px-6 fixed w-full z-50 bg-black/80 backdrop-blur-md">
+    <h1 class="text-3xl tracking-widest text-white">STREETX</h1>
+    <div class="space-x-6 text-sm uppercase hidden md:flex">
+      <a href="#home" class="hover:underline">Home</a>
+      <a href="#products" class="hover:underline">Products</a>
+      <a href="#about" class="hover:underline">About</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex items-center justify-center text-center bg-black relative">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573164574237-0e7d272d9c4a')] bg-cover bg-center opacity-20"></div>
+    <div class="z-10">
+      <h1 class="text-6xl md:text-7xl font-bold uppercase">Unisex Streetwear</h1>
+      <p class="text-lg mt-4 tracking-widest text-gray-300">Made for streets. Built for culture.</p>
+      <a href="#products" class="mt-8 inline-block px-6 py-3 border-2 border-white hover:bg-white hover:text-black transition uppercase">Explore Now</a>
     </div>
   </section>
 
-  <!-- CATEGORIES -->
-  <section class="py-12 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">Shop by Category</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Shoes</h3>
-        <a href="#" class="btn mt-2">Shop Now</a>
+  <!-- Products Section -->
+  <section id="products" class="py-16 px-6 md:px-20 bg-black">
+    <h2 class="text-4xl uppercase mb-10 text-center">Featured Drops</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white text-black p-3 rounded-xl zoom">
+        <img src="https://images.unsplash.com/photo-1622519407651-6be9f3e4c1dc" class="rounded-lg mb-3">
+        <h3 class="text-lg font-bold">Oversized Hoodie</h3>
+        <p class="text-sm text-gray-600">₹2499</p>
       </div>
-      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Clothes</h3>
-        <a href="#" class="btn mt-2">Shop Now</a>
+      <div class="bg-white text-black p-3 rounded-xl zoom">
+        <img src="https://images.unsplash.com/photo-1555529669-e69c9f248169" class="rounded-lg mb-3">
+        <h3 class="text-lg font-bold">StreetX Varsity Jacket</h3>
+        <p class="text-sm text-gray-600">₹3999</p>
       </div>
-      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Accessories</h3>
-        <a href="#" class="btn mt-2">Shop Now</a>
-      </div>
-      <div class="bg-white text-black rounded-xl p-6 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Hoodies</h3>
-        <a href="#" class="btn mt-2">Shop Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED PRODUCTS -->
-  <section id="shop" class="py-12 px-6 bg-gray-800 text-center">
-    <h2 class="text-3xl font-bold mb-10">Featured Products</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Street OG Sneakers</h3>
-          <p class="text-sm text-gray-600">₹2,999</p>
-          <button class="btn mt-3">Add to Cart</button>
-        </div>
-      </div>
-      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Urban Warrior Hoodie</h3>
-          <p class="text-sm text-gray-600">₹1,499</p>
-          <button class="btn mt-3">Add to Cart</button>
-        </div>
-      </div>
-      <div class="bg-white text-black rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Limited Edition Cap</h3>
-          <p class="text-sm text-gray-600">₹799</p>
-          <button class="btn mt-3">Add to Cart</button>
-        </div>
+      <div class="bg-white text-black p-3 rounded-xl zoom">
+        <img src="https://images.unsplash.com/photo-1612258324014-d51c8132bfbf" class="rounded-lg mb-3">
+        <h3 class="text-lg font-bold">Utility Joggers</h3>
+        <p class="text-sm text-gray-600">₹1799</p>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="py-16 px-6 text-center bg-black">
-    <h2 class="text-3xl font-bold mb-10">What Our Customers Say</h2>
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div>
-        <p class="italic text-gray-300">"StreetX gave me the dopest kicks I've ever owned!"</p>
-        <span class="block mt-2 font-semibold">– Arjun, Mumbai</span>
-      </div>
-      <div>
-        <p class="italic text-gray-300">"The quality and vibe are unbeatable. OG all the way."</p>
-        <span class="block mt-2 font-semibold">– Zeeshan, Bangalore</span>
-      </div>
+  <!-- About -->
+  <section id="about" class="py-16 px-6 md:px-20 bg-zinc-900 text-gray-300">
+    <h2 class="text-4xl uppercase mb-6">About Streetx</h2>
+    <p class="max-w-3xl text-lg leading-7">Streetx is an unapologetic streetwear movement born in India for the world. Blending global urban culture with minimal bold aesthetics, we deliver clothing that’s raw, oversized, and genderless. It’s not just fashion—it’s rebellion.</p>
+  </section>
+
+  <!-- Instagram-style Grid -->
+  <section class="bg-black py-16 px-6 md:px-20">
+    <h2 class="text-4xl uppercase mb-8 text-center">#streetx</h2>
+    <div class="grid grid-cols-3 gap-2">
+      <img src="https://source.unsplash.com/400x400/?fashion,streetwear" class="rounded-lg zoom">
+      <img src="https://source.unsplash.com/400x400/?style,urban" class="rounded-lg zoom">
+      <img src="https://source.unsplash.com/400x400/?hoodie,black" class="rounded-lg zoom">
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="py-12 px-6 bg-gray-900 text-center">
-    <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-    <p>Email: <a href="mailto:support@streetx.in" class="underline">support@streetx.in</a></p>
-    <p>Instagram: <a href="#" class="underline">@streetx.official</a></p>
-    <p class="mt-4">© 2025 StreetX. All Rights Reserved.</p>
+  <!-- Contact -->
+  <section id="contact" class="bg-zinc-950 py-16 px-6 md:px-20 text-gray-300">
+    <h2 class="text-4xl uppercase mb-6">Contact Us</h2>
+    <form class="max-w-xl">
+      <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 rounded bg-zinc-800 text-white">
+      <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 rounded bg-zinc-800 text-white">
+      <textarea placeholder="Your Message" class="w-full p-3 mb-4 rounded bg-zinc-800 text-white" rows="4"></textarea>
+      <button class="px-6 py-3 bg-white text-black font-bold hover:bg-gray-200 transition">Send</button>
+    </form>
   </section>
 
-  <!-- CART BUTTON -->
-  <button class="fixed bottom-5 right-5 bg-black text-white px-4 py-3 rounded-full shadow-lg text-sm font-semibold z-50 hover:bg-white hover:text-black border-2 border-white">
-    🛒 Cart
-  </button>
+  <!-- Footer -->
+  <footer class="bg-black py-6 text-center text-sm text-gray-400">
+    <p>&copy; 2025 STREETX. All rights reserved.</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="hover:text-white">Instagram</a>
+      <a href="#" class="hover:text-white">Twitter</a>
+      <a href="#" class="hover:text-white">YouTube</a>
+    </div>
+  </footer>
 
 </body>
-</html>
+  </html>
