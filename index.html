@@ -2,144 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StreetX - Next Gen Streetwear</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetX — Unisex Streetwear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <style>
     body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: #0a0a0a;
-      color: white;
-      overflow-x: hidden;
+      font-family: 'Urbanist', sans-serif;
+      background-color: #111;
+      color: #fff;
     }
-    header {
-      padding: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.9);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    .btn {
+      @apply px-6 py-2 rounded-full font-semibold transition-all;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1.1rem;
-      transition: color 0.3s;
+    .btn-primary {
+      @apply bg-white text-black hover:bg-gray-200;
     }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at center, #111, #000);
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffcc; }
-      to { text-shadow: 0 0 30px #00ffcc; }
-    }
-    .section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background: #111;
-      padding: 1rem;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
-      transition: transform 0.3s;
-    }
-    .product-card:hover {
-      transform: scale(1.05);
-    }
-    .lottie {
-      width: 100%;
-      max-width: 500px;
-      margin: 2rem auto;
-    }
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
+    .btn-outline {
+      @apply border border-white text-white hover:bg-white hover:text-black;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">StreetX</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#cod">COD</a>
+
+  <!-- Navbar -->
+  <header class="flex justify-between items-center px-6 py-4 sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md">
+    <h1 class="text-3xl font-bold tracking-wider">StreetX</h1>
+    <nav class="hidden md:flex gap-6 items-center text-sm uppercase">
+      <a href="#collections" class="hover:text-gray-300">Collections</a>
+      <a href="#drops" class="hover:text-gray-300">New Drops</a>
+      <a href="#about" class="hover:text-gray-300">About</a>
+      <a href="#contact" class="hover:text-gray-300">Contact</a>
     </nav>
+    <div class="flex gap-2">
+      <button class="btn btn-outline text-xs">Login</button>
+      <button class="btn btn-primary text-xs">Sign Up</button>
+    </div>
   </header>
 
-  <section class="hero" id="home">
-    <div>
-      <h1 data-aos="fade-up">WEAR THE FUTURE</h1>
-      <div class="lottie" data-aos="zoom-in">
-        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" loop autoplay></lottie-player>
+  <!-- Hero -->
+  <section class="h-screen flex items-center justify-center flex-col text-center px-4" data-aos="fade-up">
+    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_tQ3L7f.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <h2 class="text-5xl md:text-7xl font-extrabold mb-4">Unisex Streetwear Redefined</h2>
+    <p class="text-lg text-gray-300 max-w-xl mx-auto mb-6">Drop-ready fashion meets raw street identity. Designed for everyone. Built for expression.</p>
+    <a href="#collections" class="btn btn-primary text-sm">Explore Collection</a>
+  </section>
+
+  <!-- Collections -->
+  <section id="collections" class="py-20 px-6 bg-black" data-aos="fade-up">
+    <h3 class="text-4xl font-bold mb-12 text-center">Top Collections</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
+        <img src="https://source.unsplash.com/400x500/?streetwear" class="rounded-xl mb-4"/>
+        <h4 class="text-xl font-semibold">Urban Rogue</h4>
+        <p class="text-gray-400 text-sm">Oversized tees and cargo fits.</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
+        <img src="https://source.unsplash.com/400x500/?fashion" class="rounded-xl mb-4"/>
+        <h4 class="text-xl font-semibold">No Gender Rules</h4>
+        <p class="text-gray-400 text-sm">Androgynous fits for everyone.</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
+        <img src="https://source.unsplash.com/400x500/?unisex" class="rounded-xl mb-4"/>
+        <h4 class="text-xl font-semibold">Minimal Drops</h4>
+        <p class="text-gray-400 text-sm">Clean aesthetics. Max comfort.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="products" data-aos="fade-up">
-    <h2>Streetwear Drops</h2>
-    <div class="product-grid">
-      <div class="product-card" data-aos="flip-left">T-Shirt X</div>
-      <div class="product-card" data-aos="flip-left">Hoodie Pro</div>
-      <div class="product-card" data-aos="flip-left">Jacket Glow</div>
-      <div class="product-card" data-aos="flip-left">Pants Cyber</div>
+  <!-- Drops -->
+  <section id="drops" class="py-20 px-6 bg-[#111]" data-aos="zoom-in">
+    <h3 class="text-4xl font-bold mb-10 text-center">🔥 Latest Drops</h3>
+    <div class="flex flex-wrap justify-center gap-6">
+      <img src="https://source.unsplash.com/200x250/?hoodie" class="rounded-xl"/>
+      <img src="https://source.unsplash.com/200x250/?oversized" class="rounded-xl"/>
+      <img src="https://source.unsplash.com/200x250/?joggers" class="rounded-xl"/>
+      <img src="https://source.unsplash.com/200x250/?caps" class="rounded-xl"/>
     </div>
   </section>
 
-  <section class="section" id="about" data-aos="fade-right">
-    <h2>About StreetX</h2>
-    <p>StreetX blends futuristic design with global streetwear culture. From 3D stitched fabrics to animated brand tags — we make streetwear that speaks AI-age style.</p>
+  <!-- About -->
+  <section id="about" class="py-20 px-6 bg-black text-center" data-aos="fade-right">
+    <h3 class="text-4xl font-bold mb-6">What’s StreetX?</h3>
+    <p class="text-gray-300 max-w-2xl mx-auto text-lg">StreetX is your street identity. We design unisex fits for every bold soul who walks loud and stands out. From Seoul to New York, our threads travel with you.</p>
   </section>
 
-  <section class="section" id="cod" data-aos="fade-up">
-    <h2>Cash on Delivery (COD)</h2>
-    <p>We support COD across India and select global regions. Pay when your style arrives!</p>
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6 bg-gray-900 text-center" data-aos="fade-left">
+    <h3 class="text-4xl font-bold mb-6">Let's Collab</h3>
+    <p class="text-gray-400 mb-4">Want to stock StreetX? Or drop a collection with us?</p>
+    <a href="mailto:collab@streetx.com" class="btn btn-outline">collab@streetx.com</a>
   </section>
 
-  <section class="section" id="contact" data-aos="fade-left">
-    <h2>Contact Us</h2>
-    <p>Email: support@streetx.com | WhatsApp: +91-9876543210</p>
-  </section>
-
-  <footer>
-    &copy; 2025 StreetX. All rights reserved.
+  <!-- Footer -->
+  <footer class="bg-black py-6 text-center text-gray-500 text-sm">
+    © 2025 StreetX. All rights reserved.
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script>
     AOS.init();
