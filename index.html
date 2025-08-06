@@ -2,106 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StreetX — Unisex Streetwear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreetX - Unisex Streetwear</title>
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Lottie Files -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Custom Style -->
   <style>
     body {
-      font-family: 'Urbanist', sans-serif;
+      font-family: 'Arial Black', sans-serif;
       background-color: #111;
-      color: #fff;
+      color: white;
     }
     .btn {
-      @apply px-6 py-2 rounded-full font-semibold transition-all;
+      @apply px-6 py-2 rounded-full text-white font-bold transition duration-300;
     }
-    .btn-primary {
-      @apply bg-white text-black hover:bg-gray-200;
+    .btn-login {
+      background-color: #e50914;
     }
-    .btn-outline {
-      @apply border border-white text-white hover:bg-white hover:text-black;
+    .btn-signup {
+      background-color: #111;
+      border: 2px solid white;
     }
   </style>
 </head>
-<body>
-
-  <!-- Navbar -->
-  <header class="flex justify-between items-center px-6 py-4 sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md">
-    <h1 class="text-3xl font-bold tracking-wider">StreetX</h1>
-    <nav class="hidden md:flex gap-6 items-center text-sm uppercase">
-      <a href="#collections" class="hover:text-gray-300">Collections</a>
-      <a href="#drops" class="hover:text-gray-300">New Drops</a>
-      <a href="#about" class="hover:text-gray-300">About</a>
-      <a href="#contact" class="hover:text-gray-300">Contact</a>
-    </nav>
-    <div class="flex gap-2">
-      <button class="btn btn-outline text-xs">Login</button>
-      <button class="btn btn-primary text-xs">Sign Up</button>
+<body class="bg-black text-white">
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-4 bg-black z-50">
+    <h1 class="text-3xl font-extrabold tracking-wide">Street<span class="text-red-600">X</span></h1>
+    <div class="space-x-3">
+      <button class="btn btn-login">Login</button>
+      <button class="btn btn-signup">Sign Up</button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="h-screen flex items-center justify-center flex-col text-center px-4" data-aos="fade-up">
-    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_tQ3L7f.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    <h2 class="text-5xl md:text-7xl font-extrabold mb-4">Unisex Streetwear Redefined</h2>
-    <p class="text-lg text-gray-300 max-w-xl mx-auto mb-6">Drop-ready fashion meets raw street identity. Designed for everyone. Built for expression.</p>
-    <a href="#collections" class="btn btn-primary text-sm">Explore Collection</a>
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-6" data-aos="fade-up">
+    <h2 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Unisex Streetwear.  
+      <br /><span class="text-red-600">Rule the Streets</span>.
+    </h2>
+    <p class="mt-4 text-lg text-gray-300">Limited Drops. Max Style. Zero F*cks.</p>
+    <div class="mt-8">
+      <button class="btn btn-signup">Shop Collection</button>
+    </div>
+    <!-- Lottie Animation -->
+    <div class="mt-12">
+      <lottie-player src="https://lottie.host/f2f2cc2f-bcc5-4a0b-bb76-8f3e62ea92d4/wXzyDrfY4R.json"
+                     background="transparent"
+                     speed="1" style="width: 300px; height: 300px;" loop autoplay>
+      </lottie-player>
+    </div>
+  </section>
+  <!-- About Section -->
+  <section class="px-6 py-16 bg-gray-900" data-aos="fade-right">
+    <h3 class="text-4xl font-bold mb-4">About StreetX</h3>
+    <p class="text-gray-300 max-w-xl">
+      StreetX is more than a brand — it's a rebellion against boring fashion. We drop oversized, gender-free, hype-ready outfits that scream confidence.
+    </p>
   </section>
 
-  <!-- Collections -->
-  <section id="collections" class="py-20 px-6 bg-black" data-aos="fade-up">
-    <h3 class="text-4xl font-bold mb-12 text-center">Top Collections</h3>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
-        <img src="https://source.unsplash.com/400x500/?streetwear" class="rounded-xl mb-4"/>
-        <h4 class="text-xl font-semibold">Urban Rogue</h4>
-        <p class="text-gray-400 text-sm">Oversized tees and cargo fits.</p>
+  <!-- Product Grid -->
+  <section class="px-6 py-16" data-aos="zoom-in">
+    <h3 class="text-4xl font-bold text-center mb-10">🔥 Trending Drops</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+        <img src="https://i.imgur.com/uN9dQEZ.png" class="w-full rounded" />
+        <p class="mt-3 font-semibold text-lg">Oversized Tee</p>
       </div>
-      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
-        <img src="https://source.unsplash.com/400x500/?fashion" class="rounded-xl mb-4"/>
-        <h4 class="text-xl font-semibold">No Gender Rules</h4>
-        <p class="text-gray-400 text-sm">Androgynous fits for everyone.</p>
+      <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+        <img src="https://i.imgur.com/xOJ2jG5.png" class="w-full rounded" />
+        <p class="mt-3 font-semibold text-lg">Cargo Fit</p>
       </div>
-      <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition-all duration-300">
-        <img src="https://source.unsplash.com/400x500/?unisex" class="rounded-xl mb-4"/>
-        <h4 class="text-xl font-semibold">Minimal Drops</h4>
-        <p class="text-gray-400 text-sm">Clean aesthetics. Max comfort.</p>
+      <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+        <img src="https://i.imgur.com/qKuZoJ8.png" class="w-full rounded" />
+        <p class="mt-3 font-semibold text-lg">Street Hoodie</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+        <img src="https://i.imgur.com/kZk5UYE.png" class="w-full rounded" />
+        <p class="mt-3 font-semibold text-lg">Sneaker Drop</p>
       </div>
     </div>
   </section>
-
-  <!-- Drops -->
-  <section id="drops" class="py-20 px-6 bg-[#111]" data-aos="zoom-in">
-    <h3 class="text-4xl font-bold mb-10 text-center">🔥 Latest Drops</h3>
-    <div class="flex flex-wrap justify-center gap-6">
-      <img src="https://source.unsplash.com/200x250/?hoodie" class="rounded-xl"/>
-      <img src="https://source.unsplash.com/200x250/?oversized" class="rounded-xl"/>
-      <img src="https://source.unsplash.com/200x250/?joggers" class="rounded-xl"/>
-      <img src="https://source.unsplash.com/200x250/?caps" class="rounded-xl"/>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-20 px-6 bg-black text-center" data-aos="fade-right">
-    <h3 class="text-4xl font-bold mb-6">What’s StreetX?</h3>
-    <p class="text-gray-300 max-w-2xl mx-auto text-lg">StreetX is your street identity. We design unisex fits for every bold soul who walks loud and stands out. From Seoul to New York, our threads travel with you.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-20 px-6 bg-gray-900 text-center" data-aos="fade-left">
-    <h3 class="text-4xl font-bold mb-6">Let's Collab</h3>
-    <p class="text-gray-400 mb-4">Want to stock StreetX? Or drop a collection with us?</p>
-    <a href="mailto:collab@streetx.com" class="btn btn-outline">collab@streetx.com</a>
-  </section>
-
   <!-- Footer -->
-  <footer class="bg-black py-6 text-center text-gray-500 text-sm">
-    © 2025 StreetX. All rights reserved.
+  <footer class="bg-gray-900 text-center py-8 mt-10">
+    <p class="text-gray-400 text-sm">© 2025 StreetX. All rights reserved.</p>
+    <div class="flex justify-center mt-4 space-x-4">
+      <a href="#" class="text-white hover:text-red-600">Instagram</a>
+      <a href="#" class="text-white hover:text-red-600">LinkedIn</a>
+      <a href="#" class="text-white hover:text-red-600">Support</a>
+    </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- AOS Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script>
     AOS.init();
   </script>
