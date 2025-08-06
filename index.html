@@ -1,104 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StreetX — Unisex Wear</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Outfit", sans-serif;
-        background: #0e0e0e;
-        color: white;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STREETX | Unisex Streetwear</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0,0,0,0.8);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav h1 {
+      font-size: 28px;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #ccc;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      color: #fff;
+    }
+    header {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), #0d0d0d), url('https://images.unsplash.com/photo-1618219545395-2c332540c7c3?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    header h2 {
+      font-size: 60px;
+      background: linear-gradient(to right, #ffffff, #aaa);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    header p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ccc;
+    }
+    section {
+      padding: 80px 50px;
+    }
+    .collection, .about, .lookbook, .contact {
+      max-width: 1200px;
+      margin: auto;
+    }
+    h3 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .card h4 {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        padding: 20px;
       }
-      .glass {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+      header h2 {
+        font-size: 40px;
       }
-      .card3d {
-        transition: transform 0.3s ease;
-      }
-      .card3d:hover {
-        transform: perspective(1000px) rotateY(10deg) rotateX(5deg);
-      }
-    </style>
-  </head>
-  <body class="overflow-x-hidden">
-    <!-- Navbar -->
-    <header class="w-full px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-white">StreetX</h1>
-      <nav class="space-x-6 text-sm font-medium text-gray-300 hidden md:block">
-        <a href="#home" class="hover:text-white">Home</a>
-        <a href="#shop" class="hover:text-white">Shop</a>
-        <a href="#about" class="hover:text-white">About</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
-      </nav>
-    </header>
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Hero -->
-    <section id="home" class="h-[90vh] flex flex-col justify-center items-center text-center px-4 relative z-10">
-      <h2 class="text-4xl md:text-6xl font-black tracking-tight animate-pulse">
-        Unisex Streetwear<br />for Next Generation
-      </h2>
-      <p class="mt-4 text-lg text-gray-400 max-w-md">
-        Discover high-quality, fashion-forward styles that blur the line between street & luxury.
-      </p>
-      <a
-        href="#shop"
-        class="mt-8 px-8 py-3 bg-white text-black rounded-full text-sm uppercase font-bold tracking-wide hover:scale-105 transition"
-        >Shop Now</a
-      >
-    </section>
+  <nav>
+    <h1>STREETX</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- 3D Cards -->
-    <section id="shop" class="px-6 py-20 bg-gradient-to-b from-black to-neutral-900">
-      <h3 class="text-3xl font-bold mb-12 text-center">Featured Drops</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-2xl card3d shadow-lg">
-          <img src="https://images.unsplash.com/photo-1559526324-593bc073d938" class="rounded-xl mb-4" />
-          <h4 class="font-semibold text-xl mb-2">Urban Pulse Jacket</h4>
-          <p class="text-gray-400 text-sm">₹2,999 · Premium</p>
-        </div>
-        <div class="glass p-6 rounded-2xl card3d shadow-lg">
-          <img src="https://images.unsplash.com/photo-1600180758890-6e9e7a0d53ab" class="rounded-xl mb-4" />
-          <h4 class="font-semibold text-xl mb-2">NeoFit Oversize Tee</h4>
-          <p class="text-gray-400 text-sm">₹1,499 · Premium</p>
-        </div>
-        <div class="glass p-6 rounded-2xl card3d shadow-lg">
-          <img src="https://images.unsplash.com/photo-1614282084354-768df20d5b61" class="rounded-xl mb-4" />
-          <h4 class="font-semibold text-xl mb-2">Midnight Joggers</h4>
-          <p class="text-gray-400 text-sm">₹2,199 · Premium</p>
-        </div>
+  <header id="home" data-aos="zoom-in">
+    <h2>Wear the Future</h2>
+    <p>Premium Unisex Streetwear Inspired by Global Fashion</p>
+  </header>
+
+  <section id="collection" class="collection" data-aos="fade-up">
+    <h3>New Arrivals</h3>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600180758890-6dfb6b934c1e?auto=format&fit=crop&w=800&q=80" alt="Product">
+        <h4>Oversized Hoodie</h4>
       </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="px-6 py-20">
-      <div class="max-w-3xl mx-auto text-center">
-        <h3 class="text-3xl font-bold mb-4">About StreetX</h3>
-        <p class="text-gray-400 leading-relaxed">
-          StreetX is a futuristic unisex streetwear brand, combining high-end aesthetics with street culture vibes. We
-          craft experiences, not just clothing. Made for the bold, worn by the global.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1602299920123-9f3df38fe5bc?auto=format&fit=crop&w=800&q=80" alt="Product">
+        <h4>StreetX T-Shirt</h4>
       </div>
-    </section>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1602294209772-7c0d1817db0a?auto=format&fit=crop&w=800&q=80" alt="Product">
+        <h4>Utility Pants</h4>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="px-6 py-20 bg-black text-center">
-      <h3 class="text-3xl font-bold mb-6">Contact Us</h3>
-      <p class="text-gray-400 mb-4">Email: hello@streetx.in</p>
-      <p class="text-gray-400">Instagram: @streetx.global</p>
-    </section>
+  <section id="about" class="about" data-aos="fade-right">
+    <h3>About STREETX</h3>
+    <p>STREETX is a modern fashion house blending minimalism with urban edge. Our mission is to create bold, inclusive designs for all genders — redefining streetwear with global vision and comfort.</p>
+  </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-6 text-sm text-gray-500 bg-neutral-900">
-      © 2025 StreetX — All Rights Reserved
-    </footer>
-  </body>
-          </html>
+  <section id="lookbook" class="lookbook" data-aos="fade-left">
+    <h3>Lookbook</h3>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1618216731297-633c1a7df123?auto=format&fit=crop&w=800&q=80" alt="">
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1622473590927-885cb0b7c93d?auto=format&fit=crop&w=800&q=80" alt="">
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1623697174437-6d5881e7032e?auto=format&fit=crop&w=800&q=80" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" data-aos="zoom-in">
+    <h3>Contact Us</h3>
+    <p>Email: support@streetx.in<br>Phone: +91 98765 43210<br>Follow us on Instagram @streetxwear</p>
+  </section>
+
+  <footer>
+    &copy; 2025 STREETX. All Rights Reserved.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+
+</body>
+                                                             </html>
