@@ -1,120 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StreetX - Unisex Streetwear</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STREETX — Unisex Streetwear (3D)</title>
+
+  <!-- Tailwind (for layout) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+
+  <!-- GSAP (with ScrollTrigger) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js + loaders -->
+  <script src="https://unpkg.com/three@0.156.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.156.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.156.0/examples/js/loaders/GLTFLoader.js"></script>
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: #0a0a0a;
-      color: white;
-      overflow-x: hidden;
+    :root{
+      --accent: #7c3aed; /* purple accent */
+      --muted: #9ca3af;
+      --card: rgba(255,255,255,0.04);
     }
+    body{
+      background: linear-gradient(180deg,#060606,#0b0b0b);
+      color: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* Header */
     header {
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.9);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: fixed; top:0; left:0; right:0; z-index:60;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(6,6,6,0.75), rgba(6,6,6,0.4));
     }
-    nav a, nav button {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-      font-size: 1rem;
-      background: none;
-      border: 1px solid #00ffcc;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s;
+    .nav-inner{ max-width:1200px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .logo { font-weight:800; letter-spacing:1.6px; }
+    .nav-links { display:flex; gap:18px; align-items:center; color:var(--muted); font-size:14px; }
+    .btn-ghost { padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.06); color:var(--muted); }
+    .btn-primary { padding:8px 14px; border-radius:999px; background:white; color:black; font-weight:700; }
+
+    /* Hero canvas */
+    #hero {
+      position:relative;
+      min-height:92vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding-top:70px;
+      overflow:visible;
     }
-    nav a:hover, nav button:hover {
-      background: #00ffcc;
-      color: black;
+    /* three canvas area */
+    #threeWrap { position:absolute; inset:0; z-index:2; pointer-events:none; }
+    canvas { display:block; width:100%; height:100vh; }
+
+    .hero-content {
+      z-index:40; position:relative; text-align:center; max-width:920px; padding:3rem 1rem;
+      backdrop-filter: blur(6px);
     }
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: radial-gradient(circle at center, #111, #000);
+    .hero-eyebrow { color:var(--muted); font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .hero-title { font-weight:900; font-size:clamp(36px,6.5vw,72px); line-height:0.95; margin-bottom:12px; background:linear-gradient(90deg,#fff,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero-sub { color:var(--muted); font-size:16px; margin-bottom:18px; }
+
+    /* product grid */
+    .section { padding:6rem 1rem; max-width:1200px; margin:0 auto; }
+    .grid { display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
+
+    .card {
+      background: var(--card); border:1px solid rgba(255,255,255,0.04);
+      border-radius:12px; padding:14px; transition:transform .35s ease, box-shadow .35s ease;
     }
-    .hero h1 {
-      font-size: 4rem;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffcc; }
-      to { text-shadow: 0 0 30px #00ffcc; }
+    .card:hover { transform:translateY(-8px); box-shadow:0 18px 48px rgba(0,0,0,0.7); }
+    .card img{ width:100%; height:220px; object-fit:cover; border-radius:10px; display:block; }
+
+    /* small utilities */
+    .muted { color:var(--muted); font-size:14px; }
+    .accent { color:var(--accent); font-weight:700; }
+
+    footer { padding:3rem 1rem; text-align:center; color:var(--muted); }
+
+    /* responsive nav toggles for mobile */
+    .mobile-menu { display:none; }
+    @media (max-width:900px){
+      .nav-links { display:none; }
+      .mobile-menu { display:block; }
+      .hero-content { padding:2rem 1rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="logo">StreetX</div>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-      <button id="logoutBtn" style="display:none;">Logout</button>
-    </nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#111,#181818);display:flex;align-items:center;justify-content:center;font-weight:800;">SX</div>
+        <div class="logo">STREETX</div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <nav class="nav-links">
+          <a href="#shop">Shop</a>
+          <a href="#drops">Drops</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="mobile-menu">
+          <button id="mobileOpen" class="btn-ghost">Menu</button>
+        </div>
+
+        <a href="login.html" class="btn-ghost">Login</a>
+        <a href="signup.html" class="btn-primary">Sign up</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div>
-      <h1 data-aos="fade-up">WEAR THE FUTURE</h1>
-      <p id="welcomeMsg"></p>
+  <!-- HERO -->
+  <section id="hero">
+    <!-- Three canvas container (parallax layers will also live here) -->
+    <div id="threeWrap"></div>
+
+    <!-- Hero content (top) -->
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-eyebrow">New Drop • Limited Edition</div>
+      <div class="hero-title">UNISEX. UNAPOLOGETIC. STREETX</div>
+      <p class="hero-sub">Premium streetwear drops with high-quality fabrics and bold silhouettes. Global vibes, local heart.</p>
+
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <a href="#shop" class="btn-primary">Shop Now</a>
+        <a href="#drops" class="btn-ghost">Explore Drops</a>
+      </div>
+
+      <div class="mt-8" data-aos="zoom-in" data-aos-delay="200">
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width:240px;height:240px;margin:auto;" loop autoplay></lottie-player>
+      </div>
     </div>
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  <!-- PRODUCTS -->
+  <section id="shop" class="section" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6">Featured Drops</h2>
+    <div class="grid" id="productsGrid">
+      <!-- product cards injected by JS -->
+    </div>
+  </section>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDZAfXD9UvEL7ikvqRvymxHUB2geJT3AkQ",
-      authDomain: "treetxog.firebaseapp.com",
-      projectId: "treetxog",
-      storageBucket: "treetxog.firebasestorage.app",
-      messagingSenderId: "1035652146764",
-      appId: "1:1035652146764:web:6d136131bdd98f9b3f76e9",
-      measurementId: "G-D70WZ6T3MQ"
-    };
+  <!-- DROPS -->
+  <section id="drops" class="section bg-black/40" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6">Latest Drops</h2>
+    <div class="grid">
+      <div class="card" data-aos="flip-left"><div style="display:flex;gap:12px;"><img src="https://source.unsplash.com/600x400/?hoodie,street" alt=""><div><h4 class="font-semibold">Midnight Runner Pack</h4><p class="muted">Only 200 units</p></div></div></div>
+      <div class="card" data-aos="flip-left" data-aos-delay="80"><div style="display:flex;gap:12px;"><img src="https://source.unsplash.com/600x400/?jacket,street" alt=""><div><h4 class="font-semibold">Urban Shield Jacket</h4><p class="muted">Waterproof techwear</p></div></div></div>
+      <div class="card" data-aos="flip-left" data-aos-delay="160"><div style="display:flex;gap:12px;"><img src="https://source.unsplash.com/600x400/?tshirt,street" alt=""><div><h4 class="font-semibold">Graphic Tee</h4><p class="muted">Limited print</p></div></div></div>
+    </div>
+  </section>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  <!-- ABOUT -->
+  <section id="about" class="section" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-4">About StreetX</h2>
+    <p class="muted max-w-3xl">StreetX is a unisex label born from urban culture. We craft limited-run pieces that feel premium and wearable. Each drop is curated — quality, fit, and identity are everything.</p>
+  </section>
 
-    const logoutBtn = document.getElementById('logoutBtn');
-    const welcomeMsg = document.getElementById('welcomeMsg');
+  <!-- CONTACT -->
+  <section id="contact" class="section bg-black/30" data-aos="fade-up">
+    <h2 class="text-2xl font-semibold mb-4">Get in Touch / Wholesale</h2>
+    <p class="muted mb-6">collab@streetx.com • WhatsApp: +91 99999 99999</p>
+    <div style="display:flex;gap:10px;justify-content:center;">
+      <a href="mailto:collab@streetx.com" class="btn-primary">Email Us</a>
+      <a href="#shop" class="btn-ghost">Shop Now</a>
+    </div>
+  </section>
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        welcomeMsg.innerHTML = `Welcome, ${user.email}`;
-        logoutBtn.style.display = 'inline-block';
-      } else {
-        welcomeMsg.innerHTML = '';
-        logoutBtn.style.display = 'none';
-      }
+  <footer>
+    <div class="max-w-6xl mx-auto px-4">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><strong>STREETX</strong> • Unisex Streetwear</div>
+        <div class="muted">© 2025 STREETX • Crafted with care</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+  /************************************************************************
+   *  3D / Three.js hero setup
+   *  - small, performant scene
+   *  - optional: replace MODEL_URL with your GLTF model for product mockups
+   ************************************************************************/
+  (function(){
+    // Config: replace with your GLTF if you have one (CORS must allow)
+    const MODEL_URL = ''; // example: './models/hoodie.glb' or external URL
+    // fallback uses a stylized rotating torus/knot as "3D art"
+
+    // create scene
+    const wrap = document.getElementById('threeWrap');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
+    camera.position.set(0, 0, 8);
+
+    const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    wrap.appendChild(renderer.domElement);
+
+    // lighting
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x111111, 0.6);
+    scene.add(hemi);
+    const key = new THREE.DirectionalLight(0xffffff, 1.2);
+    key.position.set(5,10,7);
+    scene.add(key);
+
+    // environment gloss (simple)
+    const env = new THREE.AmbientLight(0xffffff, 0.08);
+    scene.add(env);
+
+    // group
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // placeholder geometry (stylized)
+    let modelMesh;
+    if(MODEL_URL){
+      // load gltf
+      const loader = new THREE.GLTFLoader();
+      loader.load(MODEL_URL, gltf=>{
+        modelMesh = gltf.scene;
+        modelMesh.traverse(n=>{ if(n.isMesh){ n.castShadow=true; n.receiveShadow=true; }});
+        modelMesh.scale.set(1.6,1.6,1.6);
+        group.add(modelMesh);
+      }, undefined, err=>{ console.error('GLTF load err',err); });
+    } else {
+      // torus knot + accent material
+      const mat = new THREE.MeshPhysicalMaterial({ color:0x111111, metalness:0.6, roughness:0.25, clearcoat:0.6, clearcoatRoughness:0.1 });
+      const geom = new THREE.TorusKnotGeometry(1.6,0.45,220,24);
+      modelMesh = new THREE.Mesh(geom, mat);
+      group.add(modelMesh);
+
+      // accent ring
+      const ringMat = new THREE.MeshBasicMaterial({ color:0x7c3aed, transparent:true, opacity:0.12 });
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.06, 16, 128), ringMat);
+      group.add(ring);
+    }
+
+    // simple rotation / parallax on mouse
+    const mouse = { x:0, y:0 };
+    window.addEventListener('mousemove', (e)=>{
+      mouse.x = (e.clientX/window.innerWidth - 0.5) * 2;
+      mouse.y = (e.clientY/window.innerHeight - 0.5) * -2;
     });
 
-    logoutBtn.addEventListener('click', () => {
-      signOut(auth).then(() => {
-        alert('Logged out successfully');
-        window.location.href = "index.html";
+    // responsive
+    window.addEventListener('resize', ()=> {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // animate loop
+    const clock = new THREE.Clock();
+    function animate(){
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      group.rotation.y = (mouse.x * 0.4) + t * 0.12;
+      group.rotation.x = (mouse.y * 0.35) + Math.sin(t * 0.3) * 0.05;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // small entrance using GSAP if available
+    if(window.gsap) {
+      gsap.from(group.position, { y:2, duration:1.2, ease:"power4.out" });
+    }
+  })();
+  </script>
+
+  <script>
+    // AOS init + GSAP scroll animations
+    AOS.init({ duration:900, once:true });
+
+    // small GSAP scroll effects (fade in headings)
+    if(window.gsap && window.ScrollTrigger){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('section').forEach(sec=>{
+        gsap.from(sec.querySelectorAll('h2, h3, p, .card, .glass-card'), {
+          opacity:0, y:30, stagger:0.08, duration:0.9,
+          scrollTrigger: { trigger: sec, start: "top 85%" }
+        });
       });
-    });
+    }
 
-    AOS.init();
+    // Populate sample products (you'll replace with Firestore data later)
+    (function populateDemo(){
+      const products = [
+        { id:'p1', title:'Oversized Hoodie', brand:'StreetX', price:1899, image:'https://source.unsplash.com/800x600/?hoodie,black' },
+        { id:'p2', title:'Cargo Trousers', brand:'StreetX', price:1499, image:'https://source.unsplash.com/800x600/?cargo,street' },
+        { id:'p3', title:'Graphic Tee', brand:'StreetX', price:899, image:'https://source.unsplash.com/800x600/?tshirt,street' },
+        { id:'p4', title:'Statement Cap', brand:'StreetX', price:699, image:'https://source.unsplash.com/800x600/?cap,street' }
+      ];
+      const grid = document.getElementById('productsGrid');
+      products.forEach(p=>{
+        const el = document.createElement('div');
+        el.className = 'card';
+        el.setAttribute('data-aos','zoom-in');
+        el.innerHTML = `
+          <img src="${p.image}" alt="${p.title}">
+          <div style="margin-top:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong>${p.title}</strong>
+              <div class="accent">₹${p.price}</div>
+            </div>
+            <div class="muted" style="margin-top:6px;">${p.brand}</div>
+            <div style="margin-top:10px;display:flex;gap:8px;">
+              <button class="btn-ghost">Quick View</button>
+              <button class="btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    })();
   </script>
 </body>
-</html>
+  </html>
